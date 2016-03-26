@@ -6,23 +6,39 @@
 //
 //
 
-#include "chord.h"
 
 #include <stdio.h> //allows us to use print f
 #include <stdlib.h> //malloc in here
 
-char* majorKey(char* key) {
-    char* keySig[] = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
-    int length = 12;
 
-    char* major = (char*)malloc(sizeof(char) * (6)); //mallocing a string the size of 6??
+char* keySig[] = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
+int length = 12;
+
+char* majorKey(char* key) {
+    
+
+    //char* major[(char) 6];
+    //char* major[(char)malloc(sizeof(6))];
+    char major[6];
     
     for (int i = 0; i < length; i++) {
-        major[i] = keySig[i] && (keySig[i] + 3) && (keySig[i+3] +4);
+        major[i] = keySig[i];
+        major[i+1] = keySig[i+4];
+        major [i+2] = keySig[i+4+3];
     }
-    major[6] = '\0';
     return major;
     
+}
+
+
+char* minorKey(char* key) {
+    char* minor = (char*)malloc(sizeof(6));
+    
+    for (int i = 0; i < length; i++) {
+        minor[i] = keySig[i];
+        minor[i+1] = keySig[i+3];
+        minor [i+2] = keySig[i+3+3];
+    }
 }
 
 int main() {
