@@ -14,30 +14,6 @@
 
 char* keySig[] = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
 
-//char* majorKeys(char* key) {
-//    
-////    char* originalKey = key;
-////    char* secondKey = (char*)malloc(sizeof(char) * 1);
-////    char* thirdKey;
-//    
-//    char* major = (char*)malloc(sizeof(char) * 6);
-//    
-//    for (int i = 0; i < 12; i++) {
-//        if (key != keySig[i]) {
-//            i++;
-//        }
-//        else {
-//            major[0] = *keySig[i];
-//            major[1] = *keySig[i+4];
-//            major[2] = *keySig[i+4+3];
-//            
-//            //secondKey[i] = *keySig[i+4];
-//
-//        }
-//    }
-//    return major;
-//}
-
 void majorKeys(char* key) {
     
     char* originalKey = key;
@@ -67,37 +43,56 @@ void minorKeys(char* key) {
             break;
         }
     }
-    printf("%s: %s %s %s\n", originalKey, originalKey, secondKey, thirdKey);
+    printf("%sm: %s %s %s\n", originalKey, originalKey, secondKey, thirdKey);
 }
 
-//char* minorKey(char* key) {
-//    char* minor = (char*)malloc(sizeof(6));
-//    
-//    for (int i = 0; i < 12; i++) {
-//        while (key != keySig[i]) {
-//            i++;
-//        }
-//        if (key == keySig[i]) {
-//            minor[i] = *keySig[i];
-//            minor[i+1] = *keySig[i+3];
-//            minor[i+2] = *keySig[i+3+4];
-//        }
-//    }
-//    return minor;
-//}
+void dom7(char* key) {
+    
+    char* originalKey = key;
+    char* secondKey;
+    char* thirdKey;
+    char* fourthKey;
+        
+    for (int i = 0; i < 12; i++) {
+        if (strcmp(key, keySig[i]) == 0) {
+            secondKey = keySig[((i+4)%12)];
+            thirdKey = keySig[((i+7)%12)];
+            fourthKey = keySig[((i+10)%12)];
+            break;
+        }
+    }
+    printf("%s7: %s %s %s %s\n", originalKey, originalKey, secondKey, thirdKey, fourthKey);
+}
+
+void dim7(char* key) {
+    
+    char* originalKey = key;
+    char* secondKey;
+    char* thirdKey;
+    char* fourthKey;
+        
+    for (int i = 0; i < 12; i++) {
+        if (strcmp(key, keySig[i]) == 0) {
+            secondKey = keySig[((i+3)%12)];
+            thirdKey = keySig[((i+6)%12)];
+            fourthKey = keySig[((i+9)%12)];
+            break;
+        }
+    }
+    printf("%sdim7: %s %s %s %s\n", originalKey, originalKey, secondKey, thirdKey, fourthKey);
+}
 
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
         printf("please enter a key\n");
     }
-    
-    //char* key = argv[1];
-    //char*  = majorKeys(argv[2]);
-    
-    //printf("%s: \n", argv[2]);
+ 
     majorKeys(argv[2]);
     minorKeys(argv[2]);
+    dom7(argv[2]);
+    dim7(argv[2]);
+    
     return 0;
 }
 
