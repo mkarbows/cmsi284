@@ -30,12 +30,15 @@ void findInterval(char* key1, char* key2) {
     int firstKey;
     int secondKey;
     int difference;
-    for (int i = 0; i < 13; i++) {
+    for (int i = 0; i < 12; i++) {
         if (strcmp(key1, keys[i]) == 0) {
             firstKey = i;
         }
         if (strcmp(key2, keys[i]) ==0) {
             secondKey = i;
+        }
+        if (firstKey == secondKey) {
+            difference = 12;
         }
         if (firstKey < secondKey) {
             difference = (secondKey - firstKey);
@@ -45,17 +48,12 @@ void findInterval(char* key1, char* key2) {
         }
     }
     
-//    difference = ((secondKey - firstKey)%13);
-//    12 plus lower if lower is higher
-//        12 minus lower plus higher
-    
-    char* intName;
-    
+    char* intName;    
     for (int j = 0; j < 13; j++) {
         if (difference == j) {
             intName = interval[j];
         }
-    }    
+    }
     printf("%s to %s is a %s.\n", key1, key2, intName);
 }
 
