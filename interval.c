@@ -33,23 +33,29 @@ void findInterval(char* key1, char* key2) {
     for (int i = 0; i < 13; i++) {
         if (strcmp(key1, keys[i]) == 0) {
             firstKey = i;
-            break;
         }
         if (strcmp(key2, keys[i]) ==0) {
             secondKey = i;
-            break;
+        }
+        if (firstKey < secondKey) {
+            difference = (secondKey - firstKey);
+        }
+        if (secondKey < firstKey) {
+            difference = ((12 - firstKey) + secondKey);
         }
     }
-    difference = ((secondKey - firstKey)%13);
+    
+//    difference = ((secondKey - firstKey)%13);
+//    12 plus lower if lower is higher
+//        12 minus lower plus higher
     
     char* intName;
     
-    for (int i = 0; i < 13; i++) {
-        if (difference == i) {
-            intName = interval[i];
+    for (int j = 0; j < 13; j++) {
+        if (difference == j) {
+            intName = interval[j];
         }
-    }
-    
+    }    
     printf("%s to %s is a %s.\n", key1, key2, intName);
 }
 
