@@ -18,7 +18,7 @@ void majorKeys(char* key) {
     char* originalKey = key;
     char* secondKey;
     char* thirdKey;
-        
+
     for (int i = 0; i < 11; i++) {
         if (strcmp(originalKey, keySig[i]) == 0) {
             secondKey = keySig[((i+4)%12)];
@@ -34,7 +34,7 @@ void minorKeys(char* key) {
     char* originalKey = key;
     char* secondKey;
     char* thirdKey;
-        
+
     for (int i = 0; i < 11; i++) {
         if (strcmp(key, keySig[i]) == 0) {
             secondKey = keySig[(i+3)%12];
@@ -51,7 +51,7 @@ void dom7(char* key) {
     char* secondKey;
     char* thirdKey;
     char* fourthKey;
-        
+    
     for (int i = 0; i < 11; i++) {
         if (strcmp(key, keySig[i]) == 0) {
             secondKey = keySig[((i+4)%12)];
@@ -69,7 +69,7 @@ void dim7(char* key) {
     char* secondKey;
     char* thirdKey;
     char* fourthKey;
-        
+    
     for (int i = 0; i < 11; i++) {
         if (strcmp(key, keySig[i]) == 0) {
             secondKey = keySig[((i+3)%12)];
