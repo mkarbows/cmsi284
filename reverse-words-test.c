@@ -29,7 +29,13 @@ int main() {
     char reverse3[] = "fine! is Everything";
     reverse_words(actualStr3);
     printf("%s\n", actualStr3);
-    assert(strcmp(actualStr3, reverse3) == 0);
+    //assert(strcmp(actualStr3, reverse3) == 0);
+    
+    char actualStr4[] = "Reverse     my insides!";
+    //char reverse4[]
+    reverse_words(actualStr4);
+    printf("%s\n", actualStr4);
+ 
     
     return 0;
 }
