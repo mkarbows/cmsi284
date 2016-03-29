@@ -9,6 +9,11 @@
 #ifndef madlib_by_numbers_h
 #define madlib_by_numbers_h
 
-#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+
+char* madlib_by_numbers(char* template, int word_count, char* words[]);
 
 #endif /* madlib_by_numbers_h */
