@@ -6,10 +6,30 @@
 //
 //
 
-#include <stdio.h>
+#include <stdio.h> //???
+#include <assert.h>
+#include <string.h>
+
 #include "reverse-words.c"
-#include "reverse-range-in-place.c"
 
 int main() {
+    char actualStr[] = "Hello people";
+    char reversedStr[] = "people Hello";
+    reverse_words(actualStr);
+    printf("%s\n", actualStr);
+    assert(strcmp(actualStr, reversedStr) == 0);
+    
+    char actualStr2[] = "Everything is fine!";
+    char reverse2[] = "fine! is Everything";
+    reverse_words(actualStr2);
+    printf("%s\n", actualStr2);
+    assert(strcmp(actualStr2, reverse2) == 0);
+
+    char actualStr3[] = "Everything        is fine!";
+    char reverse3[] = "fine! is Everything";
+    reverse_words(actualStr3);
+    printf("%s\n", actualStr3);
+    assert(strcmp(actualStr3, reverse3) == 0);
+    
     return 0;
 }
