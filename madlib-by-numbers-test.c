@@ -34,11 +34,20 @@ int main() {
 //    assert(strcmp(testStr, testStr2)==0);
     
     
-    char* testStr = "The fat dog likes to eat in the 5 raging moonlight.";
+//    char* testStr = "The fat dog likes to eat in the 5 raging moonlight.";
+//    
+//    char* words[] = {"eat", "fat", "dog", "raging"};
+//    
+//    char* testStr2 = madlib_by_numbers("The 1 2 likes to 0 in the 5 3 moonlight.", 4, words);
+//    
+//    assert(strcmp(testStr, testStr2)==0);
+
+    
+    char* testStr = "The fat dog likes to eat in the ragingraging moonlight.";
     
     char* words[] = {"eat", "fat", "dog", "raging"};
     
-    char* testStr2 = madlib_by_numbers("The 1 2 likes to 0 in the 5 3 moonlight.", 4, words);
+    char* testStr2 = madlib_by_numbers("The 1 2 likes to 0 in the 33 moonlight.", 4, words);
     
     assert(strcmp(testStr, testStr2)==0);
     
