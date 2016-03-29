@@ -1,6 +1,6 @@
 //
 //  interval.c
-//  
+//
 //
 //  Created by Megan Karbowski on 3/26/16.
 //
@@ -48,7 +48,7 @@ void findInterval(char* key1, char* key2) {
         }
     }
     
-    char* intName;    
+    char* intName;
     for (int j = 0; j < 13; j++) {
         if (difference == j) {
             intName = interval[j];
@@ -58,6 +58,11 @@ void findInterval(char* key1, char* key2) {
 }
 
 int main(int argc, char* argv[]) {
+    if (argc != 4) {
+        printf("please make sure you entered the interval.c file as the first argument followed by two keys with a space seperating them\n");
+        return 0;
+    }
+    
     findInterval(argv[2], argv[3]);
     
     return 0;
