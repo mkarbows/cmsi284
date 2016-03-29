@@ -7,3 +7,9 @@
 //
 
 #include <stdio.h>
+#include "reverse-words.c"
+#include "reverse-range-in-place.c"
+
+int main() {
+    return 0;
+}
