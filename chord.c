@@ -11,7 +11,6 @@
 #include <stdlib.h> //malloc in here
 #include <string.h>
 
-
 char* keySig[] = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
 
 void majorKeys(char* key) {
@@ -21,7 +20,7 @@ void majorKeys(char* key) {
     char* thirdKey;
         
     for (int i = 0; i < 12; i++) {
-        if (strcmp(key, keySig[i]) == 0) {
+        if (strcmp(originalKey, keySig[i]) == 0) {
             secondKey = keySig[((i+4)%12)];
             thirdKey = keySig[((i+7)%12)];
             break;
@@ -85,7 +84,8 @@ void dim7(char* key) {
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
-        printf("please enter a key\n");
+        printf("please make sure you entered the chord.c file as the first argument and one key as the second argument\n");
+        return 0;
     }
  
     majorKeys(argv[2]);
@@ -95,16 +95,3 @@ int main(int argc, char* argv[]) {
     
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-//not a lot of if statements
-//or switch statements
-//
