@@ -6,9 +6,9 @@
 //
 //
 
-#ifndef reverse_words_h
-#define reverse_words_h
+#ifndef REVERSE_WORDS
+#define REVERSE_WORDS
 
-#include <stdio.h>
+void reverse_words(char* string);
 
 #endif /* reverse_words_h */
