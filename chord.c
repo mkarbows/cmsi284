@@ -83,15 +83,15 @@ void dim7(char* key) {
 
 
 int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        printf("please make sure you entered the chord.c file as the first argument and one key as the second argument\n");
+    if (argc != 2) {
+        printf("please enter a key\n");
         return 0;
     }
  
-    majorKeys(argv[2]);
-    minorKeys(argv[2]);
-    dom7(argv[2]);
-    dim7(argv[2]);
+    majorKeys(argv[1]);
+    minorKeys(argv[1]);
+    dom7(argv[1]);
+    dim7(argv[1]);
     
     return 0;
 }
