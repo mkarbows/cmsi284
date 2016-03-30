@@ -58,12 +58,10 @@ void findInterval(char* key1, char* key2) {
 }
 
 int main(int argc, char* argv[]) {
-    if (argc != 4) {
-        printf("please make sure you entered the interval.c file as the first argument followed by two keys with a space seperating them\n");
+    if (argc != 3) {
+        printf("please make sure you entered two keys\n");
         return 0;
     }
-    
-    findInterval(argv[2], argv[3]);
-    
+    findInterval(argv[1], argv[2]);
     return 0;
 }
