@@ -6,43 +6,37 @@
 //
 //
 
-#include "madlib-test.h"
+#include "madlib.h"
 
-#include "madlib.c"
 #include <assert.h>
 #include <string.h>
-
-//madlib("The \%s \%s likes to \%s in the moonlight.", "brilliant", "git", "swim")
-
-//void reverse_range_in_place(char* string, int start_index, int end_index);
-//char* madlib(char* template, char* adjective, char* noun, char* verb) ??
-
-//#define MAX_TEST_STRING_LENGTH 20
-
-//void madlib-test() {
-////    char* original_string = "Reverse my insides!";
-////    char test_string[MAX_TEST_STRING_LENGTH];
-////    
-////    //strncpy(test_string, original_string, MAX_TEST_STRING_LENGTH);
-////    
-////    char* madlib(char* template, char* adjective, char* noun, char* verb);
-////    reverse_range_in_place(test_string, 9, 5);
-////    assert(strncmp(original_string, test_string, MAX_TEST_STRING_LENGTH) == 0);
-//    
-//    
-//    
-//    
-//}
+#include <stdio.h>
+#include <string.h>
 
 int main() {
+
     char* template = "The \%s \%s likes to \%s in the moonlight.";
     char* adjective = "brilliant";
     char* noun = "git";
     char* verb = "swim";
-    
-    char* madlibs = madlib(template, adjective, noun, verb);
+    char* madlibStr = madlib(template, adjective, noun, verb);
     char* testStr = "The brilliant git likes to swim in the moonlight.";
-    
-    assert(strcmp(madlibs, testStr)==0);
+    assert(strcmp(madlibStr, testStr)==0);
 
+    char* template3 = "I %s %s %s in %s the ocean";
+    char* adjective3 = "like";
+    char* noun3 = "waves";
+    char* verb3 = "surfing";
+    char* testStr3 = "I like surfing waves in the ocean";
+    char* madlibStr3 = madlib(template3,adjective3,noun3,verb3);
+    assert(madlibStr3 == NULL);
+    
+    //test supposed to fail here and it does, yay
+    char* template2 = "The \%s \%s likes to \%s in the moonlight.";
+    char* adjective2 = "hi";
+    char* noun2 = "hey";
+    char* verb2 = "hello";
+    char* madlibStr2 = madlib(template2, adjective2, noun2, verb2);
+    char* testStr2 = "The brilliant git likes to swim in the moonlight.";
+    assert(strcmp(madlibStr2, testStr2)==0);
 }
