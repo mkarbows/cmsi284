@@ -6,9 +6,12 @@
 //
 //
 
-#ifndef madlib1_h
-#define madlib1_h
+#ifndef MADLIB
+#define MADLIB
 
 #include <stdio.h>
+#include <string.h>
 
-#endif /* madlib1_h */
+char* madlib(char* template, char* adjective, char* noun, char* verb);
+
+#endif /* madlib_h */
