@@ -11,7 +11,6 @@
 
 #include "madlib-by-numbers-test.h"
 
-//#include "madlib-by-numbers.c"
 #include "madlib-by-numbers.h"
 #include <assert.h>
 
@@ -43,6 +42,6 @@ int main() {
     free(template);
     free(template2);
     free(template3);
-    free(template4); //??????
+    free(template4);
     
 }
