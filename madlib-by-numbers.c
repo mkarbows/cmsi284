@@ -12,8 +12,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdio.h>
-//#include <assert.h>
-
 
 int newLen(char* template, int word_count, char* words[]) {
     int count = 0;
@@ -34,7 +32,6 @@ char* madlib_by_numbers(char* template, int word_count, char* words[]) {
     
     int length = newLen(template, word_count, words);
     char* concatStr = calloc(length + 1, 1);
-    
     int digit;
     int wordlen;
     int pointer = 0;
@@ -50,8 +47,6 @@ char* madlib_by_numbers(char* template, int word_count, char* words[]) {
             pointer++;
         }
     }
-
     printf("%s\n", concatStr);
     return concatStr;
-    
 }
