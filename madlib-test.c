@@ -14,6 +14,7 @@
 #include <string.h>
 
 int main() {
+
     char* template = "The \%s \%s likes to \%s in the moonlight.";
     char* adjective = "brilliant";
     char* noun = "git";
@@ -21,6 +22,14 @@ int main() {
     char* madlibStr = madlib(template, adjective, noun, verb);
     char* testStr = "The brilliant git likes to swim in the moonlight.";
     assert(strcmp(madlibStr, testStr)==0);
+
+    char* template3 = "I %s %s %s in %s the ocean";
+    char* adjective3 = "like";
+    char* noun3 = "waves";
+    char* verb3 = "surfing";
+    char* testStr3 = "I like surfing waves in the ocean";
+    char* madlibStr3 = madlib(template3,adjective3,noun3,verb3);
+    assert(madlibStr3 == NULL);
     
     //test supposed to fail here and it does, yay
     char* template2 = "The \%s \%s likes to \%s in the moonlight.";
