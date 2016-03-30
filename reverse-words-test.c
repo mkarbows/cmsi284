@@ -10,7 +10,7 @@
 #include <assert.h>
 #include <string.h>
 
-#include "reverse-words.c"
+#include "reverse-words.h"
 
 int main() {
     char actualStr[] = "Hello people";
