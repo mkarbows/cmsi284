@@ -6,9 +6,10 @@
 //
 //
 
-#ifndef madlib_by_numbers_test_h
-#define madlib_by_numbers_test_h
+#ifndef MADLIB_BY_NUMBERS_TEST
+#define MADLIB_BY_NUMBERS_TEST
 
 #include <stdio.h>
+#include <assert.h>
 
 #endif /* madlib_by_numbers_test_h */
