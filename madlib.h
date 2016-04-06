@@ -1,5 +1,4 @@
 //
-//  madlib1.h
 //  
 //
 //  Created by Megan Karbowski on 3/29/16.
@@ -11,6 +10,7 @@
 
 #include <stdio.h>
 #include <string.h>
+//#include <assert.h>
 
 char* madlib(char* template, char* adjective, char* noun, char* verb);
 
