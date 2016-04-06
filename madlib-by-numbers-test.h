@@ -11,5 +11,6 @@
 
 #include <stdio.h>
 #include <assert.h>
+#include <ctype.h>
 
 #endif /* madlib_by_numbers_test_h */
