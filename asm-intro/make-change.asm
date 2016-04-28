@@ -9,14 +9,12 @@
 main:
 	push	rdi		;save register puts uses, will hold argc
 	push	rsi		;will hold argv
-	
-	add	rsi, 8
-	mov	rdi, [rsi]
-	call 	puts
-	
+	add	rsi, 8		;adjust pointer to print second argument
 	cmp	rdi, 2		;must have 2 arguments
-	jne	error1
-
+	jne	error1	
+	mov	rdi, [rsi]	;if there are 2 arguments, put second argument into rdi
+	call 	puts		;print cents
+	
 	mov	rax, rsi	;put what is inside rsi (cents) into rax register
 	cmp	rax, 25		;is cents<=25
 	jb	dimes		;jump to dimes if cents - 25 is less than 25
