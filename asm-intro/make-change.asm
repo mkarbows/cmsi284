@@ -68,11 +68,11 @@ done:
 badArgumentCount:
 	db	"Requires exactly two arguments", 10, 0
 quarter:		
-	db	25
+	dq	25
 dime:
-	db	10
+	dq	10
 nickle:
-	db	5
+	dq	5
 quartersM:
 	db	"Quarters: %d", 10, 0
 dimesM:
