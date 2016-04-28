@@ -16,36 +16,44 @@ main:
 
 	mov	rdi, [rsi]	;if there are 2 arguments, put second argument into rdi
 	call	atoi		;make argument an integer
-	mov	[cents], rax	;put integer into cents
-	
-	cmp	rax, 25		;is cents<=25
-	jb	dimes		;jump to dimes if cents - 25 is less than 25
 
-	mov	rdx, 25		;doing mod 25 essentially
-	div	rdx
-	add	[quartAmt], rax	;put the amount of quarters (quotient) into quarters mem location
+quarters:
+	xor	rdx, rdx
+	mov	rcx, [quarter]	;doing mod 25 essentially
+	div	rcx
+	mov	r13, rdx
+	mov	rsi, rax
+	mov	rdi, quartersM
+	xor	rax, rax
+	call	printf
 	
-	mov	rax, rdx	;remainder stored in rdx, quotient stored in rax
+dimes:	
+	mov	rax, r13	;remainder stored in rdx, quotient stored in rax
+	xor	rdx, rdx
+	mov	rcx, [dime]
+	div	rcx
+	mov	r14, rdx
+	mov	rsi, rax
+	mov	rdi, dimesM
+	xor	rax, rax
+	call	printf
 	
-dimes:
-	cmp	rax, 10
-	jb	nickles
-	mov	rdx, 10
-	div	rdx
-	add	[dimesAmt], rax	;put dimes amount into dimesamt
-	mov	rax, rdx
-
 nickles:
-	cmp	rax, 5
-	jb	pennies
-	mov	rdx, 5
-	div	rdx
-	add	[nicklesAmt], rax
-	mov	rax, rdx
-
+	mov	rax, r14
+	xor	rdx, rdx
+	mov	rcx, [nickle]
+	div	rcx
+	mov	r15, rdx
+	mov	rsi, rax
+	mov	rdi, nicklesM
+	xor	rax, rax
+	call	printf
+	
 pennies:
-	mov	[penniesAmt], rax
-	call	puts
+	mov	rsi, r15
+	mov	rdi, penniesM
+	xor	rax, rax
+	call	printf
 	jmp	done		
 
 error1:
@@ -55,12 +63,21 @@ error1:
 done:	
 	pop	rsi
 	pop	rdi
-
 	ret
-cents:		dq	0
-quartAmt:	dq	0
-dimesAmt:	dq	0
-nicklesAmt:	dq	0
-penniesAmt:	dq	0	
+
 badArgumentCount:
 	db	"Requires exactly two arguments", 10, 0
+quarter:		
+	db	25
+dime:
+	db	10
+nickle:
+	db	5
+quartersM:
+	db	"Quarters: %d", 10, 0
+dimesM:
+	db	"Dimes: %d", 10, 0
+nicklesM:
+	db	"Nickles: %d", 10, 0
+penniesM:
+	db	"Pennies: %d", 10, 0
