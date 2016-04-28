@@ -9,50 +9,62 @@
 main:
 	push	rdi		;save register puts uses, will hold argc
 	push	rsi		;will hold argv
-	sub	rsp, 8		;realign the stack
-
+	
+	add	rsi, 8
+	mov	rdi, [rsi]
+	call 	puts
+	
 	cmp	rdi, 2		;must have 2 arguments
 	jne	error1
 
 	mov	rax, rsi	;put what is inside rsi (cents) into rax register
 	cmp	rax, 25		;is cents<=25
-	jb	dimes		;jump to dimes if cents - 25 is less than 25????????
-	mov	eax, [rax]
-	xor	edx, edx	;clear registers for remainders
-	mov	ecx, 25		;doing mod 25 essentially
-	div	ecx
-	add	[quarters], edx	;put the amount of quarters into quarters mem location
-	call	puts		;print out quarters
-	mov	eax, edx	;remainder stored in edx, quotient stored in eax
+	jb	dimes		;jump to dimes if cents - 25 is less than 25
+
+	xor	rax, rax	;clear registers for quotient
+	xor	rdx, rdx	;clear registers for remainders
+	mov	rax, rsi	;put the number of cents into rax register
+	mov	rdx, 25		;doing mod 25 essentially
+	div	rdx
+	push	rax
+	push	rdx		;pushing remainder onto stack
+	add	[quartersAmt], rax	;put the amount of quarters (quotient) into quarters mem location
+	
+	mov	rax, rdx	;remainder stored in rdx, quotient stored in rax
 	
 dimes:
-	cmp	eax, 10
+	cmp	rax, 10
 	jb	nickles
-	mov	ecx, 10
-	div	ecx
-	mov	eax, edx
+	mov	rdx, 10
+	div	rdx
+	add	[dimesAmt], rax	;put dimes amount into dimesamt
+	mov	rax, rdx
 
 nickles:
-	cmp	eax, 5
+	cmp	rax, 5
 	jb	pennies
-	mov	ecx, 5
-	div	ecx
-	mov	eax, edx
+	mov	rdx, 5
+	div	rdx
+	add	[nicklesAmt], rax
+	mov	rax, rdx
 
 pennies:
-	mov	edi, eax
+	mov	[penniesAmt], rax
 	call	puts
 	jmp	done		
 
 error1:
-	mov	edi, badArgumentCount
+	mov	rdi, badArgumentCount
 	call	puts
 	jmp	done
 done:	
 	pop	rsi
 	pop	rdi
-	xor	rax, rax
+
 	ret
-quarters:	dq	0	
+quartersAmt:	dq	0
+dimesAmt:	dq	0
+nicklesAmt:	dq	0
+penniesAmt:	dq	0	
 badArgumentCount:
 	db	"Requires exactly two arguments", 10, 0
