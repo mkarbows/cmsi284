@@ -3,7 +3,6 @@
 ; asm ­felf64 make­change.asm && gcc make­change.o && ./a.out
 
 	global	main
-	extern	puts
 	extern	printf
 	extern	atoi
 	section	.text
@@ -16,48 +15,44 @@ main:
 
 	mov	rdi, [rsi]	;if there are 2 arguments, put second argument into rdi
 	call	atoi		;make argument an integer
-
 quarters:
 	xor	rdx, rdx
-	mov	rcx, [quarter]	;doing mod 25 essentially
-	div	rcx
-	mov	r13, rdx
-	mov	rsi, rax
-	mov	rdi, quartersM
+	mov	rcx, [quarter]	;put 25 into rcx
+	div	rcx		;divide rdxrax by 25
+	mov	r13, rdx	;store remainder in r13
+	mov	rsi, rax	;put quotient into rsi
+	mov	rdi, quartersM	;set up printing
 	xor	rax, rax
-	call	printf
-	
+	call	printf		;print quarters	
 dimes:	
-	mov	rax, r13	;remainder stored in rdx, quotient stored in rax
+	mov	rax, r13	;put quarters remainder into rax
 	xor	rdx, rdx
-	mov	rcx, [dime]
+	mov	rcx, [dime]	;get ready to divide by 10
 	div	rcx
-	mov	r14, rdx
-	mov	rsi, rax
+	mov	r14, rdx	;put the remainder in r14
+	mov	rsi, rax	;prepare to print amount of dimes
 	mov	rdi, dimesM
 	xor	rax, rax
-	call	printf
-	
+	call	printf		;print dimes	
 nickles:
-	mov	rax, r14
-	xor	rdx, rdx
-	mov	rcx, [nickle]
+	mov	rax, r14	;put dimes remainder into rax
+	xor	rdx, rdx	
+	mov	rcx, [nickle]	;get ready to divide by 5
 	div	rcx
-	mov	r15, rdx
-	mov	rsi, rax
+	mov	r15, rdx	;put remainder into r15
+	mov	rsi, rax	;get ready to print nickles
 	mov	rdi, nicklesM
 	xor	rax, rax
-	call	printf
-	
+	call	printf		;print nickles	
 pennies:
-	mov	rsi, r15
+	mov	rsi, r15	;what ever is left over from nickles is printed for pennies
 	mov	rdi, penniesM
 	xor	rax, rax
 	call	printf
 	jmp	done		
 
 error1:
-	mov	rdi, badArgumentCount
+	mov	rdi, badArgumentCount	;only get here if user doesnt give exactly 2 arguments
 	call	puts
 	jmp	done
 done:	
@@ -65,14 +60,15 @@ done:
 	pop	rdi
 	ret
 
-badArgumentCount:
-	db	"Requires exactly two arguments", 10, 0
 quarter:		
 	dq	25
 dime:
 	dq	10
 nickle:
 	dq	5
+
+badArgumentCount:
+	db	"Requires exactly two arguments", 10, 0
 quartersM:
 	db	"Quarters: %d", 10, 0
 dimesM:
