@@ -5,28 +5,25 @@
 	global	main
 	extern	puts
 	extern	printf
+	extern	atoi
 	section	.text
 main:
 	push	rdi		;save register puts uses, will hold argc
 	push	rsi		;will hold argv
 	add	rsi, 8		;adjust pointer to print second argument
 	cmp	rdi, 2		;must have 2 arguments
-	jne	error1	
+	jne	error1
+
 	mov	rdi, [rsi]	;if there are 2 arguments, put second argument into rdi
-	call 	puts		;print cents
+	call	atoi		;make argument an integer
+	mov	[cents], rax	;put integer into cents
 	
-	mov	rax, rsi	;put what is inside rsi (cents) into rax register
 	cmp	rax, 25		;is cents<=25
 	jb	dimes		;jump to dimes if cents - 25 is less than 25
 
-	xor	rax, rax	;clear registers for quotient
-	xor	rdx, rdx	;clear registers for remainders
-	mov	rax, rsi	;put the number of cents into rax register
 	mov	rdx, 25		;doing mod 25 essentially
 	div	rdx
-	push	rax
-	push	rdx		;pushing remainder onto stack
-	add	[quartersAmt], rax	;put the amount of quarters (quotient) into quarters mem location
+	add	[quartAmt], rax	;put the amount of quarters (quotient) into quarters mem location
 	
 	mov	rax, rdx	;remainder stored in rdx, quotient stored in rax
 	
@@ -60,7 +57,8 @@ done:
 	pop	rdi
 
 	ret
-quartersAmt:	dq	0
+cents:		dq	0
+quartAmt:	dq	0
 dimesAmt:	dq	0
 nicklesAmt:	dq	0
 penniesAmt:	dq	0	
