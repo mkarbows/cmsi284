@@ -53,7 +53,8 @@ pennies:
 
 error1:
 	mov	rdi, badArgumentCount	;only get here if user doesnt give exactly 2 arguments
-	call	puts
+	xor	rax, rax	
+	call	printf
 	jmp	done
 done:	
 	pop	rsi
