@@ -9,15 +9,15 @@
 	extern puts
 	section	.text
 main:
-	push	rbx
-	mov	rcx, rdi
-	sub	rcx, 2
-	mov	rdi, [rsi+8]
-	add	rsi, 16
-	mov	rdx, rsi
+	push	rbx			
+	mov	rcx, rdi		;put the words to add into rcx
+	sub	rcx, 2			;only looking at arguments after ./a.out and template
+	mov	rdi, [rsi+8]		;put template into rdi
+	add	rsi, 16			;put the words to add into rsi
+	mov	rdx, rsi		;then put the words into rdx
 	mov	rsi, rcx
 	call	madlib_by_numbers
-	mov	rdi, rax
-	call	puts
+	mov	rdi, rax		;put the result into rdi
+	call	puts			;print
 	pop	rbx
 	ret
