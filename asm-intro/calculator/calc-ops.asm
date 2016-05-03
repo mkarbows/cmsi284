@@ -8,8 +8,6 @@
 	global 	addition
 	global 	subtract
 	global	gcd
-	extern	puts
-	extern	printf
 	extern	atoi
 	section	.text
 
