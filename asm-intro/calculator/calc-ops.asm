@@ -21,31 +21,18 @@ addition:
 subtract:
 	mov	rax, rdi	;first argument into rax
 	mov	rcx, rsi	;second argument into rcx
-	sub	rax, rcx
+	sub	rax, rcx	;perform subtraction
 	ret
 gcd:
-	mov	rax, rdi
-	mov	rcx, rsi
-	cmp	rsi, 0
-	jz	equalsX
+	cmp	rsi, 0		;check if second argument is zero
+	jne	equalsX		;jump if equal
+	mov	rax, rdi	;put first argument into rax
+	ret
 equalsX:
-	mov	rsi, rax	;put x into rsi
-	mov	rdi, xIsGcd
-	;xor	rax, rax
-	call	printf
-begin:
-	cmp	rax, 0
-	jz	done
-	cmp	rax, rdx
-	jge	sorted
-	cmp
-	;finish this............
-
-sorted:
-done:
-
-xIsGcd:
-	db	"The GCD is %d", 10, 0
-
-answer:
-	db	"%d", 10, 0
+	mov	rax, rdi	;first argument into rax
+	xor	rdx, rdx	;clear to div
+	div	rsi		;div by second argument
+	mov	rdi, rsi	;move quotient into rdi (first argument)
+	mov	rsi, rdx	;move remainder into rsi (second argument)
+	call	gcd
+	ret
