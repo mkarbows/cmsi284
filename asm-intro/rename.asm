@@ -4,13 +4,12 @@
 ;the write system  call,  natch).
 
   global	main
-
   section	.text
 main:
 	;rename(rdi(oldname), rsi(newname))
 	mov	rax, 82			    ;syscall number for rename 
 	mov	rdi, [rsi+8]		;getting the first argument
-  mov	rsi, [rsi+16]		;getting the second argument
+  	mov	rsi, [rsi+16]		;getting the second argument
 	syscall                         
 
 	;exit(0)
