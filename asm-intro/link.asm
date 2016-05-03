@@ -7,12 +7,16 @@
         section	.text
 main:
 	;link(rdi(oldname), rsi(newname))
-	mov	rax, 86			;syscall number for link 
-	mov	rdi, [rsi+8]		;getting the first argument
-        mov	rsi, [rsi+16]		;getting the second argument
-	syscall                         
+	push	rsi
+	mov	rax, 1		;use the system call write (1)
+	mov	rdi, 1		;use file handle 1
+	mov	rsi, message	;put string we want to print into rsi
+	mov	rdx, 12		;specify the number of bytes
+	syscall			;use the write syscall
 
-	;exit(0)
-	mov	eax, 60			;system call 60 is exit
-	xor	rdi, rdi		;exit code 0
-	syscall				;invoke operating system to exit
+	pop	rsi		;get back our rsi that pushed originally
+	mov	rax, 86		;86 is syscall number for link
+	mov	rdi, [rsi+8]	;put the first argument into rdi
+	mov	rsi, [rsi+16]	;put second argument into rsi
+	syscall			;use the link syscall 
+	ret                       
