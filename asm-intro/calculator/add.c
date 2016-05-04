@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <inttypes.h>
 
-int64_t addition(int64_t, int64_t);
+int64_t add(int64_t, int64_t);
 
 int main(int argc, char** argv) {
 	if (argc != 3) {
@@ -11,5 +11,5 @@ int main(int argc, char** argv) {
 	}
 	int firstArg = atoi(argv[1]);
 	int secondArg = atoi(argv[2]);
-	printf("%ld\n", addition(firstArg, secondArg));
+	printf("%ld\n", add(firstArg, secondArg));
 }
