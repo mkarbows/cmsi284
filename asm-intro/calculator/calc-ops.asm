@@ -5,13 +5,12 @@
 ;C  programs  then  accept  arguments,  process  them,  and  finally  call  their  corresponding 
 ;assembly  language  function,  displaying the returned result.
 
-	global 	addition
+	global 	add
 	global 	subtract
 	global	gcd
-	extern	atoi
 	section	.text
 
-addition:
+add:
 	mov	rax, rdi	;first argument into rax
 	mov	rcx, rsi	;second argument into rcx
 	add	rax, rcx	;add them
