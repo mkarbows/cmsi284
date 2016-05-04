@@ -20,7 +20,6 @@ main:
 	jne	checkHund
 	jmp	leapYear
 checkHund:		
-	;mov	rax, rsi
 	xor	rdx, rdx	
 	mov	rcx, [hund]	;put hundred into rcx
 	div	rcx
@@ -29,7 +28,6 @@ checkHund:
 	mov	rax, rsi
 	je	false
 checkFour:
-	;mov	rax, rsi
 	xor	rdx, rdx
 	mov	rcx, [four]
 	div	rcx
