@@ -53,5 +53,3 @@ sine:
 	dq	0.0
 cosine:	
 	dq	0.0
-space:	
-	dq	0
