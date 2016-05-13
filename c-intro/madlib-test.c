@@ -31,12 +31,11 @@ int main() {
     char* madlibStr3 = madlib(template3,adjective3,noun3,verb3);
     assert(madlibStr3 == NULL);
     
-    //test supposed to fail here and it does, yay
     char* template2 = "The \%s \%s likes to \%s in the moonlight.";
     char* adjective2 = "hi";
     char* noun2 = "hey";
     char* verb2 = "hello";
     char* madlibStr2 = madlib(template2, adjective2, noun2, verb2);
     char* testStr2 = "The brilliant git likes to swim in the moonlight.";
-    assert(strcmp(madlibStr2, testStr2)==0);
+    assert(strcmp(madlibStr2, testStr2)!=0);
 }
